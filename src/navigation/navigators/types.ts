@@ -5,7 +5,8 @@ export type UserScreenParams = {
 };
 
 export type PostsStackParamList = {
-  posts: undefined;
+  "all-posts": undefined;
+  "filtered-posts": undefined;
   post: undefined;
 };
 

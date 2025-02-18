@@ -1,4 +1,14 @@
 import { StyleSheet, View, Text } from "react-native";
+import { PostComment } from "../../../redux/api/apiTypes";
+
+interface DetailedPost {
+  authorId: number;
+  authorName: string;
+  id: number;
+  title: string;
+  body: string;
+  comments: PostComment[];
+}
 
 const Post = () => {
   return (

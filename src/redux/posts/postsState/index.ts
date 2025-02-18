@@ -1,8 +1,6 @@
 import { PostsStateInterface } from "../postsTypes";
 
 export const initialState: PostsStateInterface = {
-  posts: [],
-  filteredPosts: [],
-  selectedPostWithDetails: null,
+  selectedPostId: null,
   filter: null,
 };

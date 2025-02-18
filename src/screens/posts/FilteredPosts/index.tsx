@@ -1,9 +1,9 @@
 import { StyleSheet, View, Text } from "react-native";
 
-const Posts = () => {
+const FilteredPosts = () => {
   return (
     <View style={styles.container}>
-      <Text>Posts Screen</Text>
+      <Text>Filtered Posts Screen</Text>
     </View>
   );
 };
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Posts;
+export default FilteredPosts;
