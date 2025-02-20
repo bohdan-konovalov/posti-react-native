@@ -12,7 +12,7 @@ export const jsonPlaceholderApiSlice = createApi({
     getPostsByUserId: builder.query<Post[], number>({
       query: (userId) => `posts?userId=${userId}`,
     }),
-    getPostById: builder.query<Post[], number>({
+    getPostById: builder.query<Post, number>({
       query: (postId) => `posts/${postId}`,
     }),
     getPostComments: builder.query<PostComment[], number>({
@@ -23,7 +23,7 @@ export const jsonPlaceholderApiSlice = createApi({
     getAllUsers: builder.query<User[], void>({
       query: () => "users",
     }),
-    getUserById: builder.query<User[], number>({
+    getUserById: builder.query<User, number>({
       query: (userId) => `users/${userId}`,
     }),
   }),
@@ -33,5 +33,7 @@ export const {
   useGetAllPostsQuery,
   useGetPostsByUserIdQuery,
   useGetPostByIdQuery,
+  useGetPostCommentsQuery,
   useGetAllUsersQuery,
+  useGetUserByIdQuery,
 } = jsonPlaceholderApiSlice;

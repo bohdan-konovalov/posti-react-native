@@ -1,9 +1,9 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import Users from "../../../screens/users/Users";
 import User from "../../../screens/users/User";
 import { UsersStackParamList } from "../types";
 
-const Stack = createNativeStackNavigator<UsersStackParamList>();
+const Stack = createStackNavigator<UsersStackParamList>();
 
 const UsersStack = () => (
   <Stack.Navigator initialRouteName="users">

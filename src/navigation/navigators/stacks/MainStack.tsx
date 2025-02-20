@@ -1,8 +1,8 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import TabNavigator from "../TabNavigator";
 import { MainStackParamList } from "../types";
 
-const Stack = createNativeStackNavigator<MainStackParamList>();
+const Stack = createStackNavigator<MainStackParamList>();
 
 const MainStack = () => (
   <Stack.Navigator
