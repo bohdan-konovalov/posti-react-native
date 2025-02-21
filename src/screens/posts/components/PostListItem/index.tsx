@@ -1,7 +1,6 @@
-import { FC } from "react";
 import { Pressable } from "react-native";
-import { Text } from "../../../../ui/components/Text";
-import { Post } from "../../../../redux/api/apiTypes";
+import { Text } from "src/ui/components/Text";
+import { Post } from "src/redux/api/apiTypes";
 import { styles } from "./styles";
 
 interface PostListItemProps {
@@ -9,7 +8,7 @@ interface PostListItemProps {
   onPress: (postId: number, userId: number) => void;
 }
 
-const PostListItem: FC<PostListItemProps> = ({ post, onPress }) => {
+const PostListItem = ({ post, onPress }: PostListItemProps) => {
   const handlePress = () => {
     onPress(post.id, post.userId);
   };

@@ -1,19 +1,22 @@
 import { useCallback } from "react";
 import { useLayoutEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { useGetPostsByUserIdQuery } from "../../../redux/api/apiSlice";
-import {
-  PostsStackParamList,
-  PostsStackScreenProps,
-} from "../../../navigation/navigators/types";
+import { RouteProp, useNavigation } from "@react-navigation/native";
+import { useGetPostsByUserIdQuery } from "src/redux/api/apiSlice";
+import { PostsStackParamList } from "src/navigation/navigators/types";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { Post } from "../../../redux/api/apiTypes";
+import { Post } from "src/redux/api/apiTypes";
 import { PostListItem } from "../components/PostListItem";
-import { FlatList } from "../../../ui/components/FlatList";
+import { FlatList } from "src/ui/components/FlatList";
+
+export const flatListTestID = "FilteredPosts-list";
 
 const emptyArray: any[] = [];
 
-const FilteredPosts = ({ route }: PostsStackScreenProps<"filtered-posts">) => {
+interface FilteredPostsScreenRoute {
+  route: RouteProp<PostsStackParamList, "filtered-posts">;
+}
+
+const FilteredPosts = ({ route }: FilteredPostsScreenRoute) => {
   const {
     filter: { userId, userName },
   } = route.params;
@@ -57,6 +60,7 @@ const FilteredPosts = ({ route }: PostsStackScreenProps<"filtered-posts">) => {
 
   return (
     <FlatList
+      testID={flatListTestID}
       data={validFilteredPosts}
       renderItem={renderItem}
       keyExtractor={keyExtractor}

@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { Pressable, View } from "react-native";
 import { Text } from "../Text";
 import { styles } from "./styles";
@@ -10,7 +9,7 @@ interface LinkProps {
   onPress?: () => void;
 }
 
-const Link: FC<LinkProps> = ({ prefix, loading, children, onPress }) => (
+const Link = ({ prefix, loading, children, onPress }: LinkProps) => (
   <View style={styles.container}>
     {prefix ? (
       <Text style={styles.prefix} loading={loading}>

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { JSON_PLACEHOLDER_BASE_URL } from "../../config/urls";
+import { JSON_PLACEHOLDER_BASE_URL } from "src/config/urls";
 import { Post, PostComment, User } from "./apiTypes";
 
 export const jsonPlaceholderApiSlice = createApi({

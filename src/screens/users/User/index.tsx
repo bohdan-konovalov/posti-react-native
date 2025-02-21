@@ -1,17 +1,21 @@
 import { View } from "react-native";
-import { Text } from "../../../ui/components/Text";
+import { Text } from "src/ui/components/Text";
 import {
   NavigatorParamList,
-  UsersStackScreenProps,
-} from "../../../navigation/navigators/types";
-import { useGetUserByIdQuery } from "../../../redux/api/apiSlice";
-import { styles } from "./styles";
-import { useNavigation } from "@react-navigation/native";
+  UsersStackParamList,
+} from "src/navigation/navigators/types";
+import { useGetUserByIdQuery } from "src/redux/api/apiSlice";
+import { RouteProp, useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { Button } from "../../../ui/components/Button";
-import { ErrorMessage } from "../../../ui/components/ErrorMessage";
+import { Button } from "src/ui/components/Button";
+import { ErrorMessage } from "src/ui/components/ErrorMessage";
+import { styles } from "./styles";
 
-const User = ({ route }: UsersStackScreenProps<"user">) => {
+interface UserScreenRoute {
+  route: RouteProp<UsersStackParamList, "user">;
+}
+
+const User = ({ route }: UserScreenRoute) => {
   const { userId } = route.params;
   const { data: user, isLoading, isError } = useGetUserByIdQuery(userId);
 
@@ -33,7 +37,7 @@ const User = ({ route }: UsersStackScreenProps<"user">) => {
   ) : (
     <View style={styles.container}>
       <Text loading={isLoading} style={styles.nameText}>
-        {user?.name && `Name: ${user?.name}`}
+        {user?.name && `Name: ${user.name}`}
       </Text>
       <Text loading={isLoading}>{user?.email && `Email: ${user.email}`}</Text>
       <Text loading={isLoading}>{user?.phone && `Phone: ${user.phone}`}</Text>
@@ -41,7 +45,7 @@ const User = ({ route }: UsersStackScreenProps<"user">) => {
         {user?.website && `Website: ${user.website}`}
       </Text>
       <Button
-        disabled={isLoading || isError}
+        disabled={isLoading}
         title={
           user?.name ? `Browse ${user.name}'s posts` : `Browse this user posts`
         }

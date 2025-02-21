@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { View } from "react-native";
 import { Text } from "../Text";
 import { styles } from "./styles";
@@ -7,7 +6,7 @@ interface ErrorMessageProps {
   message?: string;
 }
 
-const ErrorMessage: FC<ErrorMessageProps> = ({ message }) => (
+const ErrorMessage = ({ message }: ErrorMessageProps) => (
   <View style={styles.container}>
     <Text style={styles.titleText}>Error</Text>
     <Text numberOfLines={3} style={styles.messageText}>

@@ -5,8 +5,8 @@ import * as SplashScreen from "expo-splash-screen";
 import * as React from "react";
 
 Asset.loadAsync([
-  require("../../assets/newspaper.png"),
-  require("../../assets/user.png"),
+  require("root/assets/newspaper.png"),
+  require("root/assets/user.png"),
 ]);
 
 SplashScreen.preventAutoHideAsync();

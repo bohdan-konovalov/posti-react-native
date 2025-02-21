@@ -6,7 +6,18 @@
     "start": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "tsc": "tsc --noEmit"
+    "tsc": "tsc --noEmit",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|react-redux|@react-native|@react-navigation|react-navigation|react-navigation-stack|react-navigation-tabs|jest-runtime|react-dom|@react-native-community|expo|@expo|@expo/vector-icons)"
+    ],
+    "setupFiles": [
+      "./node_modules/react-native-gesture-handler/jestSetup.js",
+      "./jest/globals.js"
+    ]
   },
   "dependencies": {
     "@expo/metro-runtime": "~4.0.0",
@@ -32,7 +43,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@testing-library/react-native": "^13.0.1",
+    "@types/jest": "^29.5.14",
     "@types/react": "~18.3.12",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "jest": "~29.7.0",
+    "jest-expo": "~52.0.5",
     "typescript": "^5.7.2"
   },
   "private": true

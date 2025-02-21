@@ -1,19 +1,25 @@
 import { useCallback } from "react";
 import {
   NavigatorParamList,
-  PostsStackScreenProps,
-} from "../../../navigation/navigators/types";
+  PostsStackParamList,
+} from "src/navigation/navigators/types";
 import {
   useGetPostByIdQuery,
   useGetUserByIdQuery,
   useGetPostCommentsQuery,
-} from "../../../redux/api/apiSlice";
+} from "src/redux/api/apiSlice";
 import { PostWithComments } from "./components/PostWithComments";
-import { useNavigation } from "@react-navigation/native";
+import { RouteProp, useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { ErrorMessage } from "../../../ui/components/ErrorMessage";
+import { ErrorMessage } from "src/ui/components/ErrorMessage";
 
-const Post = ({ route }: PostsStackScreenProps<"post">) => {
+export const testID = "Post";
+
+interface PostScreenRoute {
+  route: RouteProp<PostsStackParamList, "post">;
+}
+
+const Post = ({ route }: PostScreenRoute) => {
   const { userId, postId } = route.params;
   const {
     data: post,
@@ -42,6 +48,7 @@ const Post = ({ route }: PostsStackScreenProps<"post">) => {
     <ErrorMessage />
   ) : (
     <PostWithComments
+      testID={testID}
       authorId={userId}
       authorName={user?.name}
       title={post?.title}

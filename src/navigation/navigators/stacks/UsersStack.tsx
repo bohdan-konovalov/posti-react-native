@@ -1,6 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import Users from "../../../screens/users/Users";
-import User from "../../../screens/users/User";
+import Users from "src/screens/users/Users";
+import User from "src/screens/users/User";
 import { UsersStackParamList } from "../types";
 
 const Stack = createStackNavigator<UsersStackParamList>();

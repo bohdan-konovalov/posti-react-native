@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { Text as NativeText, View, TextStyle, StyleProp } from "react-native";
 import { styles } from "./styles";
 
@@ -9,12 +8,7 @@ interface TextProps {
   children?: string;
 }
 
-const Text: FC<TextProps> = ({
-  loading,
-  style,
-  numberOfLines = 1,
-  children,
-}) => {
+const Text = ({ loading, style, numberOfLines = 1, children }: TextProps) => {
   return loading ? (
     <View style={styles.loadingPlaceholder} />
   ) : (

@@ -9,4 +9,5 @@ export const styles = StyleSheet.create({
   },
   nameText: { fontWeight: "bold", fontSize: 14 },
   bodyText: { color: "#666" },
+  emailText: { fontStyle: "italic", color: "#6200EE80" },
 });

@@ -20,9 +20,9 @@ const FlatList = <ItemT,>({
   onRefresh,
   isLoading,
   isFetching,
+  ...props
 }: FlatListProps<ItemT>) => {
-  const showSpinnerAsEmptyComponent =
-    isLoading || (isFetching && !data?.length);
+  const showSpinnerAsEmptyComponent = isLoading || isFetching;
   const reduceOpacity = isFetching && data?.length;
   return (
     <NativeFlatList
@@ -39,6 +39,7 @@ const FlatList = <ItemT,>({
         )
       }
       style={[styles.flatList, { opacity: reduceOpacity ? 0.5 : 1 }]}
+      {...props}
     />
   );
 };

@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Image } from "react-native";
-import user from "../../../assets/user.png";
-import newspaper from "../../../assets/newspaper.png";
+import user from "root/assets/user.png";
+import newspaper from "root/assets/newspaper.png";
 import PostsStack from "./stacks/PostsStack";
 import UsersStack from "./stacks/UsersStack";
 import { TabNavigatorParamList } from "./types";

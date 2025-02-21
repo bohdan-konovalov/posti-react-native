@@ -1,20 +1,22 @@
-import { FC, useCallback } from "react";
+import { useCallback } from "react";
 import { Pressable } from "react-native";
-import { Text } from "../../../ui/components/Text";
-import { useGetAllUsersQuery } from "../../../redux/api/apiSlice";
+import { Text } from "src/ui/components/Text";
+import { useGetAllUsersQuery } from "src/redux/api/apiSlice";
 import { styles } from "./styles";
-import { User } from "../../../redux/api/apiTypes";
-import { FlatList } from "../../../ui/components/FlatList";
+import { User } from "src/redux/api/apiTypes";
+import { FlatList } from "src/ui/components/FlatList";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { UsersStackParamList } from "../../../navigation/navigators/types";
+import { UsersStackParamList } from "src/navigation/navigators/types";
+
+export const flatListTestID = "Users-list";
 
 interface UserListItemProps {
   user: User;
   onPress: (userId: number) => void;
 }
 
-const UserListItem: FC<UserListItemProps> = ({ user, onPress }) => {
+const UserListItem = ({ user, onPress }: UserListItemProps) => {
   const handlePress = () => {
     onPress(user.id);
   };
@@ -49,6 +51,7 @@ const Users = () => {
 
   return (
     <FlatList
+      testID={flatListTestID}
       data={users}
       renderItem={renderItem}
       keyExtractor={keyExtractor}

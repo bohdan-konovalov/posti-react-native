@@ -1,11 +1,13 @@
 import { useCallback } from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { PostsStackParamList } from "../../../navigation/navigators/types";
-import { useGetAllPostsQuery } from "../../../redux/api/apiSlice";
-import { FlatList } from "../../../ui/components/FlatList";
+import { PostsStackParamList } from "src/navigation/navigators/types";
+import { useGetAllPostsQuery } from "src/redux/api/apiSlice";
+import { FlatList } from "src/ui/components/FlatList";
 import { PostListItem } from "../components/PostListItem";
 import { useNavigation } from "@react-navigation/native";
-import { Post } from "../../../redux/api/apiTypes";
+import { Post } from "src/redux/api/apiTypes";
+
+export const flatListTestID = "AllPosts-list";
 
 const AllPosts = () => {
   const { data: posts, isLoading, isFetching, refetch } = useGetAllPostsQuery();
@@ -29,6 +31,7 @@ const AllPosts = () => {
 
   return (
     <FlatList
+      testID={flatListTestID}
       data={posts}
       renderItem={renderItem}
       keyExtractor={keyExtractor}

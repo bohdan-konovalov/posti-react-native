@@ -1,7 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import AllPosts from "../../../screens/posts/AllPosts";
-import FilteredPosts from "../../../screens/posts/FilteredPosts";
-import Post from "../../../screens/posts/Post";
+import AllPosts from "src/screens/posts/AllPosts";
+import FilteredPosts from "src/screens/posts/FilteredPosts";
+import Post from "src/screens/posts/Post";
 import { PostsStackParamList } from "../types";
 import { Ionicons } from "@expo/vector-icons";
 

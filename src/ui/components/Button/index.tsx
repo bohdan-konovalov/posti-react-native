@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { Pressable, ViewStyle, TextStyle } from "react-native";
 import { Text } from "../Text";
 import { styles } from "./styles";
@@ -14,7 +13,7 @@ interface ButtonProps {
   disabledBorderColor?: ViewStyle["borderColor"];
 }
 
-const Button: FC<ButtonProps> = ({
+const Button = ({
   title,
   onPress,
   color = "#6200EE",
@@ -23,7 +22,7 @@ const Button: FC<ButtonProps> = ({
   disabled,
   disabledColor = "#CCC",
   disabledBorderColor = "#AAA",
-}) => (
+}: ButtonProps) => (
   <Pressable
     onPress={onPress}
     disabled={disabled}

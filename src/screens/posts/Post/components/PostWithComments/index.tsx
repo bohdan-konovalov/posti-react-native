@@ -1,13 +1,13 @@
-import { FC } from "react";
 import { View, ScrollView } from "react-native";
-import { Text } from "../../../../../ui/components/Text";
-import { PostComment } from "../../../../../redux/api/apiTypes";
+import { Text } from "src/ui/components/Text";
+import { PostComment } from "src/redux/api/apiTypes";
 import { CommentListItem } from "../CommentListItem";
-import { Link } from "../../../../../ui/components/Link";
+import { Link } from "src/ui/components/Link";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { styles } from "./styles";
 
-interface PostProps {
+export interface PostProps {
+  testID?: string;
   authorId: number;
   authorName?: string;
   title?: string;
@@ -18,7 +18,8 @@ interface PostProps {
   onAuthorPress?: () => void;
 }
 
-const PostWithComments: FC<PostProps> = ({
+const PostWithComments = ({
+  testID = "Generic",
   authorName,
   title,
   body,
@@ -26,15 +27,16 @@ const PostWithComments: FC<PostProps> = ({
   isLoading,
   areCommentsLoading,
   onAuthorPress,
-}) => {
+}: PostProps) => {
   const tabBarHeight = useBottomTabBarHeight();
-  const showComments = comments && comments.length;
+  const showComments = !!comments?.length;
   const commentsPlaceholderText = areCommentsLoading
     ? "Loading..."
     : "No data available";
 
   return (
     <View
+      testID={`${testID}-post-with-comments-container`}
       style={[
         styles.container,
         { marginBottom: tabBarHeight + styles.container.padding },
