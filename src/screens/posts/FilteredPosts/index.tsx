@@ -25,13 +25,13 @@ const FilteredPosts = ({ route }: PostsStackScreenProps<"filtered-posts">) => {
     isFetching,
   } = useGetPostsByUserIdQuery(userId);
 
+  const navigation = useNavigation<StackNavigationProp<PostsStackParamList>>();
+
   // As we are dealing with mobile navigation, the screen is not removed from the stack when we leave it.
   // So, when we open it again with a new userId, the old filteredPosts are still available.
   // This check helps us avoid showing posts filtered by the previous userId.
   const validFilteredPosts =
     filteredPosts[0]?.userId === userId ? filteredPosts : emptyArray;
-
-  const navigation = useNavigation<StackNavigationProp<PostsStackParamList>>();
 
   useLayoutEffect(() => {
     navigation.setOptions({

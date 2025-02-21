@@ -9,6 +9,7 @@ import { styles } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { Button } from "../../../ui/components/Button";
+import { ErrorMessage } from "../../../ui/components/ErrorMessage";
 
 const User = ({ route }: UsersStackScreenProps<"user">) => {
   const { userId } = route.params;
@@ -27,7 +28,9 @@ const User = ({ route }: UsersStackScreenProps<"user">) => {
     }
   };
 
-  return (
+  return isError ? (
+    <ErrorMessage />
+  ) : (
     <View style={styles.container}>
       <Text loading={isLoading} style={styles.nameText}>
         {user?.name && `Name: ${user?.name}`}

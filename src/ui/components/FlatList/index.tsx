@@ -21,6 +21,9 @@ const FlatList = <ItemT,>({
   isLoading,
   isFetching,
 }: FlatListProps<ItemT>) => {
+  const showSpinnerAsEmptyComponent =
+    isLoading || (isFetching && !data?.length);
+  const reduceOpacity = isFetching && data?.length;
   return (
     <NativeFlatList
       data={isLoading ? emptyArray : data}
@@ -29,16 +32,13 @@ const FlatList = <ItemT,>({
       onRefresh={onRefresh}
       refreshing={isFetching}
       ListEmptyComponent={
-        isLoading || (isFetching && !data?.length) ? (
+        showSpinnerAsEmptyComponent ? (
           <ActivityIndicator size="large" color="#6200EE" />
         ) : (
           <Text style={styles.text}>No data available</Text>
         )
       }
-      style={[
-        styles.flatList,
-        { opacity: isFetching && data?.length ? 0.5 : 1 },
-      ]}
+      style={[styles.flatList, { opacity: reduceOpacity ? 0.5 : 1 }]}
     />
   );
 };

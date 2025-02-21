@@ -1,65 +1,51 @@
-# Starter Template with React Navigation
+# Posti
 
-This is a minimal starter template for React Native apps using Expo and React Navigation.
-
-It includes the following:
-
-- Example [Native Stack](https://reactnavigation.org/docs/native-stack-navigator) with a nested [Bottom Tab](https://reactnavigation.org/docs/bottom-tab-navigator)
-- Web support with [React Native for Web](https://necolas.github.io/react-native-web/)
-- TypeScript support and configured for React Navigation
-- Automatic deep link and URL handling configuration
-- Expo [Development Build](https://docs.expo.dev/develop/development-builds/introduction/) with [Continuous Native Generation](https://docs.expo.dev/workflow/continuous-native-generation/)
-- Edge-to-edge configured on Android with [`react-native-edge-to-edge`](https://www.npmjs.com/package/react-native-edge-to-edge)
+Post browsing mobile application built using React Native.
 
 ## Getting Started
-
-1. Create a new project using this template:
-
-   ```sh
-   npx create-expo-app@latest --template react-navigation/template
-   ```
-
-2. Edit the `app.json` file to configure the `name`, `slug`, `scheme` and bundle identifiers (`ios.bundleIdentifier` and `android.bundleIdentifier`) for your app.
-
-3. Edit the `src/App.tsx` file to start working on your app.
-
-## Running the app
 
 - Install the dependencies:
 
   ```sh
-  npm install
+  yarn install
   ```
 
 - Start the development server:
 
   ```sh
-  npm start
+  yarn start
   ```
 
 - Build and run iOS and Android development builds:
 
   ```sh
-  npm run ios
+  yarn ios
   # or
-  npm run android
+  yarn android
   ```
-
-- In the terminal running the development server, press `i` to open the iOS simulator, `a` to open the Android device or emulator, or `w` to open the web browser.
 
 ## Notes
 
 This project uses a [development build](https://docs.expo.dev/develop/development-builds/introduction/) and cannot be run with [Expo Go](https://expo.dev/go). To run the app with Expo Go, edit the `package.json` file, remove the `expo-dev-client` package and `--dev-client` flag from the `start` script. However, Edge-to-edge won't work on Expo Go.
 
-We highly recommend using the development builds for normal development and testing.
+It's highly recommended using the development builds for normal development and testing.
 
 The `ios` and `android` folder are gitignored in the project by default as they are automatically generated during the build process ([Continuous Native Generation](https://docs.expo.dev/workflow/continuous-native-generation/)). This means that you should not edit these folders directly and use [config plugins](https://docs.expo.dev/config-plugins/) instead. However, if you need to edit these folders, you can remove them from the `.gitignore` file so that they are tracked by git.
+
+## Troubleshooting
+
+If occasionally after `yarn ios` / `yarn android` command you see this error and the app was installed:
+
+![Error message](./assets/possible-error.png)
+
+Just run `yarn start` and open the installed app.
 
 ## Resources
 
 - [React Navigation documentation](https://reactnavigation.org/)
 - [Expo documentation](https://docs.expo.dev/)
+- [Redux toolkit documentation](https://redux-toolkit.js.org/)
 
 ---
 
-Demo assets are from [lucide.dev](https://lucide.dev/)
+Developed by [Bohdan Konovalov](https://github.com/bohdan-konovalov)

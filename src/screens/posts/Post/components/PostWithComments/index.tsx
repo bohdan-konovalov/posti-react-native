@@ -26,7 +26,6 @@ const PostWithComments: FC<PostProps> = ({
   onAuthorPress,
 }) => {
   const tabBarHeight = useBottomTabBarHeight();
-  const postWrittenBy = `${authorName}`;
 
   return (
     <View
@@ -40,7 +39,7 @@ const PostWithComments: FC<PostProps> = ({
           {title}
         </Text>
         <Link prefix="By:" loading={isLoading} onPress={onAuthorPress}>
-          {postWrittenBy}
+          {authorName}
         </Link>
         <Text
           numberOfLines={"unlimited"}

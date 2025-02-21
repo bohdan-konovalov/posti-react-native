@@ -11,6 +11,7 @@ import {
 import { PostWithComments } from "./components/PostWithComments";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { ErrorMessage } from "../../../ui/components/ErrorMessage";
 
 const Post = ({ route }: PostsStackScreenProps<"post">) => {
   const { userId, postId } = route.params;
@@ -29,7 +30,9 @@ const Post = ({ route }: PostsStackScreenProps<"post">) => {
     navigation.navigate("users-tab", { screen: "user", params: { userId } });
   }, [navigation, userId]);
 
-  return (
+  return isError ? (
+    <ErrorMessage />
+  ) : (
     <PostWithComments
       authorId={userId}
       authorName={user?.name}

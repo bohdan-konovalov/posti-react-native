@@ -17,7 +17,11 @@ const Link: FC<LinkProps> = ({ prefix, loading, children, onPress }) => (
         {`${prefix} `}
       </Text>
     ) : null}
-    <Pressable onPress={onPress} style={styles.pressableContainer}>
+    <Pressable
+      disabled={!children}
+      onPress={onPress}
+      style={styles.pressableContainer}
+    >
       <Text loading={loading} style={styles.text}>
         {children}
       </Text>
