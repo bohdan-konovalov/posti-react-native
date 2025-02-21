@@ -20,4 +20,5 @@ export const styles = StyleSheet.create({
     textAlign: "left",
   },
   subtitleText: { fontWeight: "bold", marginBottom: 4 },
+  noDataText: { textAlign: "center", padding: 16, color: "#888" },
 });

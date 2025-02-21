@@ -14,6 +14,7 @@ interface PostProps {
   body?: string;
   comments?: PostComment[];
   isLoading?: boolean;
+  areCommentsLoading?: boolean;
   onAuthorPress?: () => void;
 }
 
@@ -23,9 +24,14 @@ const PostWithComments: FC<PostProps> = ({
   body,
   comments,
   isLoading,
+  areCommentsLoading,
   onAuthorPress,
 }) => {
   const tabBarHeight = useBottomTabBarHeight();
+  const showComments = comments && comments.length;
+  const commentsPlaceholderText = areCommentsLoading
+    ? "Loading..."
+    : "No data available";
 
   return (
     <View
@@ -49,9 +55,15 @@ const PostWithComments: FC<PostProps> = ({
           {body}
         </Text>
         <Text style={styles.subtitleText}>{"Comments:"}</Text>
-        {comments?.map((comment) => {
-          return <CommentListItem key={comment.id} comment={comment} />;
-        })}
+        {showComments ? (
+          comments.map((comment) => {
+            return <CommentListItem key={comment.id} comment={comment} />;
+          })
+        ) : (
+          <Text numberOfLines={2} style={styles.noDataText}>
+            {commentsPlaceholderText}
+          </Text>
+        )}
       </ScrollView>
     </View>
   );

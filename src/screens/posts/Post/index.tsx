@@ -18,10 +18,18 @@ const Post = ({ route }: PostsStackScreenProps<"post">) => {
   const {
     data: post,
     isLoading: isPostLoading,
-    isError,
+    isError: isPostError,
   } = useGetPostByIdQuery(postId);
-  const { data: user, isLoading: isUserLoading } = useGetUserByIdQuery(userId);
-  const { data: comments } = useGetPostCommentsQuery(postId);
+
+  const {
+    data: user,
+    isLoading: isUserLoading,
+    isError: isUserError,
+  } = useGetUserByIdQuery(userId);
+
+  const { data: comments, isLoading: areCommentsLoading } =
+    useGetPostCommentsQuery(postId);
+
   const navigation = useNavigation<StackNavigationProp<NavigatorParamList>>();
 
   const isPostDataLoading = isPostLoading || isUserLoading;
@@ -30,7 +38,7 @@ const Post = ({ route }: PostsStackScreenProps<"post">) => {
     navigation.navigate("users-tab", { screen: "user", params: { userId } });
   }, [navigation, userId]);
 
-  return isError ? (
+  return isPostError || isUserError ? (
     <ErrorMessage />
   ) : (
     <PostWithComments
@@ -40,6 +48,7 @@ const Post = ({ route }: PostsStackScreenProps<"post">) => {
       body={post?.body}
       comments={comments}
       isLoading={isPostDataLoading}
+      areCommentsLoading={areCommentsLoading}
       onAuthorPress={onAuthorPress}
     />
   );
