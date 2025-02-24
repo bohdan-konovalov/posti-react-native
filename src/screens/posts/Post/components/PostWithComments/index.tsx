@@ -3,7 +3,6 @@ import { Text } from "src/ui/components/Text";
 import { PostComment } from "src/redux/api/apiTypes";
 import { CommentListItem } from "../CommentListItem";
 import { Link } from "src/ui/components/Link";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
 import { styles } from "./styles";
 
 export interface PostProps {
@@ -28,8 +27,7 @@ const PostWithComments = ({
   areCommentsLoading,
   onAuthorPress,
 }: PostProps) => {
-  const tabBarHeight = useBottomTabBarHeight();
-  const showComments = !!comments?.length;
+  const haveComments = !!comments?.length;
   const commentsPlaceholderText = areCommentsLoading
     ? "Loading..."
     : "No data available";
@@ -37,10 +35,7 @@ const PostWithComments = ({
   return (
     <View
       testID={`${testID}-post-with-comments-container`}
-      style={[
-        styles.container,
-        { marginBottom: tabBarHeight + styles.container.padding },
-      ]}
+      style={styles.container}
     >
       <ScrollView showsVerticalScrollIndicator={false}>
         <Text style={styles.titleText} loading={isLoading} numberOfLines={3}>
@@ -57,7 +52,7 @@ const PostWithComments = ({
           {body}
         </Text>
         <Text style={styles.subtitleText}>{"Comments:"}</Text>
-        {showComments ? (
+        {haveComments ? (
           comments.map((comment) => {
             return <CommentListItem key={comment.id} comment={comment} />;
           })

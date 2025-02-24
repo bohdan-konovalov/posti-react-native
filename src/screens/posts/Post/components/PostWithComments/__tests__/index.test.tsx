@@ -1,11 +1,8 @@
 import { render } from "@testing-library/react-native";
 import { PostComment } from "src/redux/api/apiTypes";
 import { PostWithComments, PostProps } from "../index";
-import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
-import { styles } from "../styles";
 
 const testID = "Test";
-const containerTestID = `${testID}-post-with-comments-container`;
 const mockOnAuthorPress = jest.fn();
 const mockComments: PostComment[] = [
   {
@@ -58,27 +55,6 @@ const mockPostWithoutCommentsAndLoadingProps = {
   areCommentsLoading: true,
   comments: [],
 } satisfies PostProps;
-
-const mockTabBarHeight = 100;
-
-jest.mock("@react-navigation/bottom-tabs", () => ({
-  ...jest.requireActual("@react-navigation/bottom-tabs"),
-  useBottomTabBarHeight: jest.fn(() => mockTabBarHeight),
-}));
-
-jest.mock("../styles", () => {
-  const actualStyles = jest.requireActual("../styles");
-  return {
-    ...actualStyles,
-    styles: {
-      ...actualStyles.styles,
-      container: {
-        ...actualStyles.styles.container,
-        padding: 5,
-      },
-    },
-  };
-});
 
 describe("PostWithComments", () => {
   it("should render content correctly", () => {
@@ -135,21 +111,6 @@ describe("PostWithComments", () => {
     expect(getSecondCommentEmailText).toBeOnTheScreen();
     expect(getSecondCommentBodyText).toBeOnTheScreen();
   });
-
-  it.each([10, 20, 30])(
-    "should calculate container style correctly",
-    (mockedTabBarHeight) => {
-      (useBottomTabBarHeight as jest.Mock).mockReturnValue(mockedTabBarHeight);
-      const { getByTestId } = render(
-        <PostWithComments {...mockPostWithCommentsProps} />
-      );
-      const Container = getByTestId(containerTestID);
-
-      expect(Container).toHaveStyle({
-        marginBottom: mockedTabBarHeight + styles.container.padding,
-      });
-    }
-  );
 
   it.each([
     mockPostWithoutCommentsProps,

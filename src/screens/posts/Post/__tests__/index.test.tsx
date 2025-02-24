@@ -162,6 +162,10 @@ describe("Post", () => {
       userQueryResponse: mockedUserQueryResponse,
       postQueryResponse: { ...mockedPostQueryResponse, isError: true },
     },
+    {
+      userQueryResponse: { ...mockedUserQueryResponse, isError: true },
+      postQueryResponse: { ...mockedPostQueryResponse, isError: true },
+    },
   ])("should render error", ({ userQueryResponse, postQueryResponse }) => {
     (useGetPostByIdQuery as jest.Mock).mockReturnValue(postQueryResponse);
     (useGetUserByIdQuery as jest.Mock).mockReturnValue(userQueryResponse);
@@ -185,6 +189,10 @@ describe("Post", () => {
     },
     {
       userQueryResponse: mockedUserQueryResponse,
+      postQueryResponse: { ...mockedPostQueryResponse, isLoading: true },
+    },
+    {
+      userQueryResponse: { ...mockedUserQueryResponse, isLoading: true },
       postQueryResponse: { ...mockedPostQueryResponse, isLoading: true },
     },
   ])(

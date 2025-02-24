@@ -39,6 +39,7 @@ const FlatList = <ItemT,>({
         )
       }
       style={[styles.flatList, { opacity: reduceOpacity ? 0.5 : 1 }]}
+      contentContainerStyle={styles.contentContainer}
       {...props}
     />
   );
